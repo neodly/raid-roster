@@ -13,7 +13,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(
+            __file__
+        )
+    )
+)
 
 
 # Quick-start development settings - unsuitable for production
@@ -23,9 +29,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "eg+uttr9gq)0*0f8z)nm2nko^ep3%x0qb&!p8zva4ll06cjo@b"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (
+    True
+)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = (
+    []
+)
 
 
 # Application definition
@@ -78,7 +88,10 @@ WSGI_APPLICATION = "raid_roster.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "NAME": os.path.join(
+            BASE_DIR,
+            "db.sqlite3",
+        ),
     }
 }
 
@@ -90,9 +103,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
 ]
 
 
@@ -101,13 +120,21 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = (
+    "UTC"
+)
 
-USE_I18N = True
+USE_I18N = (
+    True
+)
 
-USE_L10N = True
+USE_L10N = (
+    True
+)
 
-USE_TZ = True
+USE_TZ = (
+    True
+)
 
 
 # Static files (CSS, JavaScript, Images)
