@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import useFetch from './fetchData';
+import { Fetcher } from './fetchData';
 
 
 const useStyles = makeStyles({
@@ -25,34 +25,41 @@ const classIcons = {
     Cadros: 'druid',
     Malzifari: 'priest',
     Tamzin: 'warlock',
+    Mansi: 'druid',
+    Turq: 'rogue',
+    Slackrah: 'warlock',
+    Handsomepoo: 'warrior',
+    Thrifty: 'warrior',
+    Nukbar: 'shaman',
+    Bill: 'rogue',
 };
 
-export default ({ url }) => {
-    const [{ name, roles: characterRoles }, loading] = useFetch(url);
-
-    return loading ? <TableRow /> : (
-        <TableRow key={name}>
-            <TableCell align="left">
-                <img
-                  alt={name}
-                  src={`https://raw.githubusercontent.com/orourkek/Wow-Icons/master/images/class/64/${classIcons[name]}.png`}
-                  style={{ width: 25, height: 25 }}
-                />
-            </TableCell>
-            <TableCell align="right">
-                <Typography>
-                    {name}
-                </Typography>
-            </TableCell>
-            <TableCell align="right">
-                {characterRoles.map((role) => (
+export default ({ url }) => (
+    <Fetcher url={url}>
+        {({ name, roles: characterRoles }) => (
+            <TableRow key={name}>
+                <TableCell align="left">
                     <img
-                      alt={role}
-                      src={`https://raw.githubusercontent.com/orourkek/Wow-Icons/master/images/class/64/${roles[role]}.png`}
-                      style={{ width: 25, height: 25, paddingRight: 2 }}
+                      alt={name}
+                      src={`https://raw.githubusercontent.com/orourkek/Wow-Icons/master/images/class/64/${classIcons[name]}.png`}
+                      style={{ width: 25, height: 25 }}
                     />
-                ))}
-            </TableCell>
-        </TableRow>
-    );
-};
+                </TableCell>
+                <TableCell align="right">
+                    <Typography>
+                        {name}
+                    </Typography>
+                </TableCell>
+                <TableCell align="right">
+                    {characterRoles.map((role) => (
+                        <img
+                          alt={role}
+                          src={`https://raw.githubusercontent.com/orourkek/Wow-Icons/master/images/class/64/${roles[role]}.png`}
+                          style={{ width: 25, height: 25, paddingRight: 2 }}
+                        />
+                    ))}
+                </TableCell>
+            </TableRow>
+        )}
+    </Fetcher>
+);

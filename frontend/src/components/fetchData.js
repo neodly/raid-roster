@@ -14,3 +14,11 @@ export default function useFetch(url) {
     }, []);
     return [data, loading];
 }
+
+
+export const Fetcher = ({ url, children }) => {
+    const [data, loading] = useFetch(url);
+    if (loading) return 'loading';
+    if (!data) return null;
+    return children(data);
+};

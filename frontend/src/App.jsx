@@ -4,39 +4,35 @@ import {
     Tabs, Paper, Tab, Container, Grid, AppBar, Toolbar, Typography,
 } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import useFetch from './components/fetchData';
+import useFetch, { Fetcher } from './components/fetchData';
 import Header from './components/header';
 import RaiderTable from './components/raiderTable';
+import RaidPanel from './components/raidPanel';
 
-
-const App = () => {
-    const [data, loading] = useFetch('http://localhost:8000/api/raids');
-    return (
-        <CssBaseline>
-            <AppBar position="sticky">
-                <Toolbar>
-                    <Header />
-                </Toolbar>
-            </AppBar>
-            <Container fixed>
-                <Grid
-                  container
-                  direction="column"
-                  justify="space-evenly"
-                  alignitems="stretch"
-                >
-                    {loading ? 'Loading'
-                        : data.map(({ url }) => (
-                            <div style={{ paddingBottom: 5 }}>
-                                <RaiderTable url={url} />
-                            </div>
-                        ))}
-
-                </Grid>
-            </Container>
-        </CssBaseline>
-    );
-};
-
+const App = () => (
+    <CssBaseline>
+        <AppBar position="sticky">
+            <Toolbar>
+                <Header />
+            </Toolbar>
+        </AppBar>
+        <Container fixed>
+            <Grid
+              container
+              direction="column"
+              justify="space-evenly"
+              alignitems="stretch"
+            >
+                <Fetcher url="http://localhost:8000/api/raids">
+                    {(raids) => raids.map(({ url }) => (
+                        <div style={{ paddingTop: 15 }}>
+                            <RaidPanel url={url} />
+                        </div>
+                    ))}
+                </Fetcher>
+            </Grid>
+        </Container>
+    </CssBaseline>
+);
 
 export default App;
