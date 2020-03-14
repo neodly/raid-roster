@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { CircularProgress } from '@material-ui/core';
 
 export default function useFetch(url) {
     const [data, setData] = useState([]);
@@ -18,7 +20,7 @@ export default function useFetch(url) {
 
 export const Fetcher = ({ url, children }) => {
     const [data, loading] = useFetch(url);
-    if (loading) return 'loading';
+    if (loading) return <CircularProgress />;
     if (!data) return null;
     return children(data);
 };

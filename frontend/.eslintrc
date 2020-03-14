@@ -24,7 +24,12 @@
   "rules": {
     "indent": [
       "error",
-      4
+      4,
+      {
+        "ignoredNodes": [
+          "JSXElement *"
+        ]
+      }
     ],
     "react/jsx-indent": [
       "error",

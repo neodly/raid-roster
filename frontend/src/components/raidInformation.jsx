@@ -8,9 +8,8 @@ export default ({ raid }) => (
         <Grid
           container
           direction="row"
-          spacing={24}
+          spacing={10}
           justify="space-between"
-
         >
             <Grid item sm={6} stype={{ flex: 1 }}>
                 <Typography variant="h3">
